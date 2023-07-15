@@ -6,10 +6,10 @@ import logo from "../assets/logo.png";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <header className="md:mx-8 md:rounded-b md:rounded-r p-2 text-textColor sticky top-0 z-50 font-mono bg-primary">
+    <header className="md:mx-8 md:rounded-b md:rounded-r p-2 text-textColor sticky top-0 z-50 font-mono bg-primary shadow-lg">
       <div className="lg:container flex justify-between items-center h-12 ">
         <Link className="" to="/">
-          <img src={logo} className="w-2/6 mt-2" alt="Logo" />
+          <img src={logo} className="w-2/6 ml-2" alt="Logo" />
         </Link>
 
         <ul className="items-stretch hidden space-x-3 lg:flex px-4 rounded-md">

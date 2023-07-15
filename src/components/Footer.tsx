@@ -3,14 +3,15 @@ import logo from "../assets/logo.png";
 const Footer = () => {
   return (
     <div className="bg-accent text-secondary p-16">
-      <div className="flex justify-between items-start lg:container ">
-        <div className="grid grid-cols-4 items-center">
+      <div className="lg:container ">
+        <div className="grid grid-cols-4 items-center justify-between">
           <ul className="space-y-2">
             <li>Upcoming</li>
             <li>Shipping</li>
             <li>How it works</li>
           </ul>
           <ul className="space-y-2">
+            <li>Support</li>
             <li>Support</li>
             <li>Careers</li>
           </ul>
@@ -27,7 +28,7 @@ const Footer = () => {
           </ul>
           <ul>
             <li>
-              <img className="w-2/5" src={logo} alt="Logo" />
+              <img className="w-1/5" src={logo} alt="Logo" />
             </li>
             <li>Copyright 2023</li>
 

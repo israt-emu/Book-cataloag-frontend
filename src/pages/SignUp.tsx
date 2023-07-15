@@ -5,7 +5,6 @@ const SignUp = () => {
   // const [name, setName] = useState("");
   //   const [email, setEmail] = useState("");
   //   const [password, setPassword] = useState("");
-  //   const [role, setRole] = useState(false);
   //   const [repetPassword, setRepetPassword] = useState("");
   //   const [error, setError] = useState("");
   //   const [signUp, {data: responseData, isLoading, error: responseError}] = useSignUpMutation();

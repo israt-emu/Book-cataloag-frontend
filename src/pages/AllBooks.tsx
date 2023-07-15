@@ -1,4 +1,5 @@
 import BookSidebar from "../components/Books/BookSidebar";
+import Books from "../components/Books/Books";
 
 const AllBooks = () => {
   return (
@@ -7,7 +8,9 @@ const AllBooks = () => {
         <div className="col-span-3 bg-second p-4">
           <BookSidebar />
         </div>
-        <div className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ipsa voluptate sit quos sed perspiciatis ducimus asperiores est! Facere temporibus sint id, unde culpa aliquam vero alias dolorem vitae iste?</div>
+        <div className="col-start-4 col-end-12">
+          <Books />
+        </div>
       </section>
     </div>
   );

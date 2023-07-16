@@ -1,14 +1,18 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {IBookProps} from "../../interfaces/book";
 import {Link, useNavigate} from "react-router-dom";
 import {BsFillSendFill} from "react-icons/bs";
 import {MdReviews} from "react-icons/md";
 import SingleReview from "./SingleReview";
 import Swal from "sweetalert2";
-import {useDeleteBookMutation} from "../../redux/features/book/bookApi";
+import {useAddReviewMutation, useDeleteBookMutation} from "../../redux/features/book/bookApi";
+import {useAppSelector} from "../../redux/hooks";
 const Review = ({book}: IBookProps) => {
-  const [deleteBook, {data, isLoading, isError}] = useDeleteBookMutation();
+  const {id} = useAppSelector((state) => state.auth.user);
+  const [deleteBook, {data, isError}] = useDeleteBookMutation();
+  const [addReview, {data: reviewData, isError: reviewError}] = useAddReviewMutation();
   const navigate = useNavigate();
+  //delete book
   const handleDelete = () => {
     Swal.fire({
       title: "Do you want to delete the book?",
@@ -38,7 +42,28 @@ const Review = ({book}: IBookProps) => {
       Swal.fire("Oops!", "Something went wrong!", "error");
     }
   }, [data, isError]);
-
+  //add review
+  const [review, setReview] = useState("");
+  const handleAddReview = () => {
+    if (review !== "") {
+      addReview({
+        id: book?._id,
+        data: {
+          user: id,
+          review: review,
+        },
+      });
+    } else {
+      Swal.fire("", "Please write a review first!", "info");
+    }
+  };
+  useEffect(() => {
+    if (reviewData?.success) {
+      Swal.fire("Great!", "You leave review succesfully!", "success");
+    } else if (!reviewData?.success && reviewError) {
+      Swal.fire("Oops!", "Something went wrong!", "error");
+    }
+  }, [reviewData, reviewError]);
   return (
     <div className="col-start-6 col-end-11 pl-4">
       <div className="flex justify-end items-center mb-3">
@@ -51,12 +76,12 @@ const Review = ({book}: IBookProps) => {
         </button>
       </div>
       <div className="flex items-center justify-end">
-        <input type="text" placeholder="Leave a Review" className="w-3/5 px-2 py-2 outline-none rounded border border-primary" />
-        <button type="submit" className="cursor-pointer text-xl ml-2 rounded-full bg-accent px-2 py-2">
+        <input type="text" placeholder="Leave a Review" className="w-3/5 px-2 py-2 outline-none rounded border border-primary" onChange={(e) => setReview(e.target.value)} />
+        <button type="submit" className="cursor-pointer text-xl ml-2 rounded-full bg-accent px-2 py-2" onClick={handleAddReview}>
           <BsFillSendFill />
         </button>
       </div>
-      <div className="font-medium mb-2 mt-4 flex items-center">
+      <div className="font-medium mb-2 mt-4 flex items-center border-b border-primary pb-2">
         <div className="text-xl mr-2">
           <MdReviews />
         </div>

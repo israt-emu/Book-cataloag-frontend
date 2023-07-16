@@ -39,7 +39,7 @@ export const bookApi = api.injectEndpoints({
     }),
     addReview: builder.mutation({
       query: ({id, data}) => ({
-        url: `/books/${id}`,
+        url: `/books/addReview/${id}`,
         method: "PATCH",
         body: data,
       }),

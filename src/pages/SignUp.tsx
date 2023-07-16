@@ -2,23 +2,21 @@ import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import logo from "../assets/logo.png";
 import {useSignUpMutation} from "../redux/features/auth/authApi";
+import Swal from "sweetalert2";
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repetPassword, setRepetPassword] = useState("");
-  const [error, setError] = useState("");
   const [signUp, {data: responseData, isLoading, error: responseError}] = useSignUpMutation();
   const navigate = useNavigate();
 
   //
   useEffect(() => {
-    if (!responseData?.success) {
-      setError(responseData?.message);
+    if (!responseData?.success && responseError) {
+      Swal.fire("Oops!", `Something Went wrong`, "error");
     }
-    if (responseError) {
-      setError("Sorry! An error occured..");
-    }
+
     if (responseData?.success && responseData?.data) {
       navigate("/login");
     }
@@ -26,19 +24,16 @@ const SignUp = () => {
   //signUp user
   const handleSubmit = (e: {preventDefault: () => void}) => {
     e.preventDefault();
-    setError("");
     if (password !== repetPassword) {
-      setError("Password Did not Matched");
+      Swal.fire("Oops!", `Password didn't match`, "error");
       // console.log(password);
       return;
     } else {
-      setError("");
       const data = {
         name,
         email,
         password,
       };
-      console.log(data);
       signUp(data);
     }
   };

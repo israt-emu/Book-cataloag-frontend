@@ -2,21 +2,19 @@ import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import logo from "../../assets/logo.png";
 import {useLoginMutation} from "../../redux/features/auth/authApi";
+import Swal from "sweetalert2";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [login, {data, isLoading, error: responseError}] = useLoginMutation();
   const navigate = useNavigate();
   //
 
   useEffect(() => {
-    if (!data?.success) {
-      setError(data?.message);
+    if (!data?.success && responseError) {
+      Swal.fire("Oops!", `Something Went wrong`, "error");
     }
-    if (responseError) {
-      setError("Sorry! An error occured..");
-    }
+
     if (data?.success && data?.accessToken) {
       navigate("/allbooks");
     }
@@ -25,7 +23,6 @@ const LoginForm = () => {
 
   const handleLogin = (e: {preventDefault: () => void}): void => {
     e.preventDefault();
-    setError("");
 
     if (email !== "" && password !== "") {
       login({
@@ -33,7 +30,7 @@ const LoginForm = () => {
         password,
       });
     } else {
-      setError("Please fill up required fields !");
+      Swal.fire("Sorry!", `Please fill up all required fields`, "info");
     }
   };
 

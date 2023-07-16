@@ -1,14 +1,10 @@
-import React from "react";
-import {useGetBooksQuery} from "../../redux/features/book/bookApi";
-import {IBook} from "../../interfaces/book";
+import {IBook, IBookSidebarProps} from "../../interfaces/book";
 import CardSkeleton from "../ui/CardSkeleton";
 import {Link} from "react-router-dom";
 import BookCard from "./BookCard";
 import Error from "../ui/Error";
 
-const Books = () => {
-  const {data, isLoading, isError, error} = useGetBooksQuery(undefined);
-  console.log(data?.data);
+const Books = ({data, isError, isLoading}: IBookSidebarProps) => {
   // decide what to render
   let content = null;
 
@@ -24,16 +20,16 @@ const Books = () => {
       </div>
     );
   }
-  if (!isError && !isLoading && data?.data?.length > 0) {
+  if (!isError && !isLoading && data?.length > 0) {
     content = (
       <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 mx-auto">
-        {data?.data?.map((book: IBook) => (
+        {data?.map((book: IBook) => (
           <BookCard key={book?._id} book={book} />
         ))}
       </div>
     );
   }
-  if (!isError && !isLoading && data?.data?.length === 0) {
+  if (!isError && !isLoading && data?.length === 0) {
     content = <div className="grid grid-cols-1 justify-center items-center gap-4 mt-8 pb-8 w-11/12 mx-auto">No Books Found!</div>;
   }
   return (

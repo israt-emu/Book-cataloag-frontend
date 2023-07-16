@@ -3,7 +3,7 @@ import {IBookProps} from "../../interfaces/book";
 import {FaHeart} from "react-icons/fa";
 import {Link} from "react-router-dom";
 const BookCard = ({book}: IBookProps) => {
-  const {title, genre, author, publicationDate, _id} = book;
+  const {title, genre, author, publicationYear, _id} = book;
   return (
     <div className="max-w-xs rounded-md shadow-md h-full bg-fill">
       <Link to={`/book-details/${_id}`}>
@@ -13,7 +13,7 @@ const BookCard = ({book}: IBookProps) => {
             <h2 className="text-xl font-semibold">{title}</h2>
             <p className="font-semibold">Author: {author}</p>
             <p className="text-sm">Genre: {genre}</p>
-            <p className="text-sm">Publication date: {publicationDate}</p>
+            <p className="text-sm">Publication date: {publicationYear}</p>
           </div>
           <div className="flex items-center font-semibold rounded-md text-2xl text-accent">
             <FaHeart />

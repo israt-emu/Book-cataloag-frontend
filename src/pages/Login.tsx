@@ -1,6 +1,6 @@
 import React from "react";
 import LoginForm from "../components/login/LoginForm";
-import RightsideContent from "../components/login/Rightsidecontent";
+import RightsideContent from "../components/login/RightsideContent";
 
 const Login = () => {
   return (

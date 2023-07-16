@@ -26,9 +26,9 @@ const EditBookForm = () => {
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="date" className="text-sm">
-                Publication Date
+                Publication Year
               </label>
-              <input id="date" type="date" placeholder="Publication Date" className=" px-2 py-2 outline-none w-full rounded-md mt-2" />
+              <input id="date" type="text" placeholder="Publication Date" className=" px-2 py-2 outline-none w-full rounded-md mt-2" />
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="img" className="text-sm">

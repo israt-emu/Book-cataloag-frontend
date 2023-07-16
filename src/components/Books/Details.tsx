@@ -13,7 +13,7 @@ const Details = ({book}: IBookProps) => {
       <h3 className="font-semibold text-xl">Title: {book?.title}</h3>
       <p className="font-semibold">Author: {book?.author}</p>
       <p className="font-medium">Genre: {book?.genre}</p>
-      <p className="font-medium">Publication Date: {book?.publicationDate}</p>
+      <p className="font-medium">Publication Date: {book?.publicationYear}</p>
     </div>
   );
 };

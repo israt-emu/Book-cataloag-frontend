@@ -9,12 +9,20 @@ export interface IBook {
   title?: string;
   author?: string;
   genre?: string;
-  publicationDate?: string;
+  publicationYear?: string;
   reviews: Review[];
   image?: string;
 }
 export interface IBookProps {
   book: IBook;
+}
+export interface IBooksProps {
+  data: IBook[];
+}
+export interface IBookSidebarProps {
+  data: IBook[];
+  isError: boolean;
+  isLoading: boolean;
 }
 export interface IReview {
   id?: string | IUser;

@@ -18,8 +18,10 @@ const BookSidebar = ({data}: IBooksProps) => {
       genres.push(book?.genre!);
     }
   });
+  //add filtered data to redux
   const selectGenre = (value: string) => {
     dispatch(genreFilter(value));
+    dispatch(yearFilter(""));
   };
   const selectYear = (value: string) => {
     dispatch(yearFilter(value));

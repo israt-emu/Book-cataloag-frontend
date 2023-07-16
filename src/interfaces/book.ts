@@ -12,6 +12,7 @@ export interface IBook {
   publicationYear?: string;
   reviews: Review[];
   image?: string;
+  addedBy?: string | undefined;
 }
 export interface IBookProps {
   book: IBook;

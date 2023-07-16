@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const EditBookForm = () => {
   const {editId} = useParams();
-  const {data: bookData} = useGetSingleBookQuery(editId);
+  const {data: bookData} = useGetSingleBookQuery({id: editId});
   const book = bookData?.data;
   const [updateBook, {data, isLoading, isError}] = useUpdateBookMutation();
   const [formData, setFormData] = useState<Partial<IBook>>({});
@@ -29,8 +29,7 @@ const EditBookForm = () => {
   };
   useEffect(() => {
     if (data?.success) {
-      Swal.fire("Great!", "Book added succesfully!", "success");
-      setFormData({});
+      Swal.fire("Great!", "Book edited succesfully!", "success");
     } else if (!data?.success && isError) {
       Swal.fire("Oops!", "Something went wrong!", "error");
     }
@@ -68,7 +67,7 @@ const EditBookForm = () => {
               <label htmlFor="img" className="text-sm">
                 Image
               </label>
-              <input id="img" type="text" placeholder="Image Link" className=" px-2 py-2 outline-none w-full rounded-md mt-2" defaultValue={formData?.image} disabled={isLoading} onChange={handleInputChange} />
+              <input id="img" type="text" name="image" placeholder="Image Link" className=" px-2 py-2 outline-none w-full rounded-md mt-2" defaultValue={formData?.image} disabled={isLoading} onChange={handleInputChange} />
             </div>
             <div className="col-span-full sm:col-span-3 lg:mt-8">
               <button type="submit" className="px-2 py-2 rounded bg-accent text-fill cursor-pointer text-sm">

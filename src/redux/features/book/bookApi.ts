@@ -20,7 +20,7 @@ export const bookApi = api.injectEndpoints({
       query: ({id, data}) => ({
         url: `/books/${id}`,
         method: "PATCH",
-        body: data?.bookData,
+        body: data,
       }),
     }),
 

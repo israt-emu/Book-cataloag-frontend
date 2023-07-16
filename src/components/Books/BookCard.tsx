@@ -13,7 +13,7 @@ const BookCard = ({book}: IBookProps) => {
             <h2 className="text-xl font-semibold">{title}</h2>
             <p className="font-semibold">Author: {author}</p>
             <p className="text-sm">Genre: {genre}</p>
-            <p className="text-sm">Publication date: {publicationYear}</p>
+            <p className="text-sm">Publication Year: {publicationYear}</p>
           </div>
           <div className="flex items-center font-semibold rounded-md text-2xl text-accent">
             <FaHeart />

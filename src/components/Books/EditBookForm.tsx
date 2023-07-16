@@ -23,6 +23,7 @@ const EditBookForm = () => {
       [name]: value,
     }));
   };
+  //
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     updateBook({id: book?._id, data: updatedData});

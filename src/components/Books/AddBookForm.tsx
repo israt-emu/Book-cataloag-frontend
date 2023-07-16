@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const AddBookForm = () => {
   const [addBook, {data, isLoading, isError}] = useAddBookMutation();
-  const {id: userId} = useAppSelector((state: {auth: {user: any}}) => state.auth.user);
+  const {id: userId} = useAppSelector((state) => state.auth.user);
   const [formData, setFormData] = useState<Partial<IBook>>({});
 
   const handleInputChange = (e: {target: {name: string; value: number | string}}) => {

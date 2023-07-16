@@ -36,7 +36,16 @@ const Books = () => {
   if (!isError && !isLoading && data?.data?.length === 0) {
     content = <div className="grid grid-cols-1 justify-center items-center gap-4 mt-8 pb-8 w-11/12 mx-auto">No Books Found!</div>;
   }
-  return <div>{content}</div>;
+  return (
+    <div>
+      <div className="flex justify-end mb-3">
+        <Link className="" to="/add-new-book">
+          <button className="px-2 py-1.5 rounded bg-accent text-fill cursor-pointer text-sm">Add New Book</button>
+        </Link>
+      </div>
+      {content}
+    </div>
+  );
 };
 
 export default Books;

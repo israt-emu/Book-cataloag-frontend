@@ -12,16 +12,16 @@ const Footer = () => {
           </ul>
           <ul className="space-y-2">
             <li>Support</li>
-            <li>Support</li>
             <li>Careers</li>
+            <li>Privacy & Terms</li>
           </ul>
           <ul className="space-y-2">
             <li>Contact team:</li>
-            <li className="flex items-center justify-start">
+            <li className="flex items-center justify-start gap-2">
               <RiFacebookBoxFill />
               Facebook
             </li>
-            <li className="flex items-center justify-start">
+            <li className="flex items-center justify-start gap-2">
               <RiInstagramLine />
               Instagram
             </li>

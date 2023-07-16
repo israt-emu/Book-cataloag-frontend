@@ -8,7 +8,7 @@ const AllBooks = () => {
         <div className="col-span-3 bg-second p-4">
           <BookSidebar />
         </div>
-        <div className="col-start-4 col-end-12">
+        <div className="col-span-8">
           <Books />
         </div>
       </section>

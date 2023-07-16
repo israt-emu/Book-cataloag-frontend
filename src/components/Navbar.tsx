@@ -14,7 +14,13 @@ const Navbar = () => {
 
         <ul className="items-stretch hidden space-x-3 lg:flex px-4 rounded-md">
           <li className="flex items-center">
-            <Link to="/login" className="flex items-center px-4 hover:bg-gray-500/30 py-1 rounded">
+            <Link to="/allbooks" className="flex items-center px-4 hover:bg-gray-500/30 py-1 rounded">
+              Books
+            </Link>
+            <Link to="/allbooks" className="flex items-center px-4 hover:bg-gray-500/30 py-1 rounded">
+              Wishlist
+            </Link>
+            <Link to="/login" className="flex items-center px-4 ml-2 bg-gray-500/30 py-1 rounded">
               Login
             </Link>
           </li>

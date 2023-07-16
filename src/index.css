@@ -32,6 +32,12 @@
     font-size: 3.2em;
     line-height: 1.1;
   }
+  .banner {
+    background-image: url("./assets/banner.jpg");
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 @media (prefers-color-scheme: light) {

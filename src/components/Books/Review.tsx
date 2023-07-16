@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {IBookProps} from "../../interfaces/book";
+import {IBookReviewProps} from "../../interfaces/book";
 import {Link, useNavigate} from "react-router-dom";
 import {BsFillSendFill} from "react-icons/bs";
 import {MdReviews} from "react-icons/md";
@@ -7,10 +7,11 @@ import SingleReview from "./SingleReview";
 import Swal from "sweetalert2";
 import {useAddReviewMutation, useDeleteBookMutation} from "../../redux/features/book/bookApi";
 import {useAppSelector} from "../../redux/hooks";
-const Review = ({book}: IBookProps) => {
+const Review = ({book, refetch}: IBookReviewProps) => {
   const {id} = useAppSelector((state) => state.auth.user);
   const [deleteBook, {data, isError}] = useDeleteBookMutation();
   const [addReview, {data: reviewData, isError: reviewError}] = useAddReviewMutation();
+  const authorizeUser = id === book?.addedBy;
   const navigate = useNavigate();
   //delete book
   const handleDelete = () => {
@@ -60,6 +61,7 @@ const Review = ({book}: IBookProps) => {
   useEffect(() => {
     if (reviewData?.success) {
       Swal.fire("Great!", "You leave review succesfully!", "success");
+      refetch();
     } else if (!reviewData?.success && reviewError) {
       Swal.fire("Oops!", "Something went wrong!", "error");
     }
@@ -68,10 +70,12 @@ const Review = ({book}: IBookProps) => {
     <div className="col-start-6 col-end-11 pl-4">
       <div className="flex justify-end items-center mb-3">
         <Link to={`/edit-book/${book?._id}`}>
-          <button className="px-2 py-1.5 rounded bg-accent text-fill text-sm">Edit Book</button>
+          <button className="px-2 py-1.5 rounded bg-accent text-fill text-sm" disabled={!authorizeUser}>
+            Edit Book
+          </button>
         </Link>
 
-        <button className="px-2 py-1.5 rounded bg-accent text-fill cursor-pointer ml-3 text-sm" onClick={handleDelete}>
+        <button className="px-2 py-1.5 rounded bg-accent text-fill cursor-pointer ml-3 text-sm" onClick={handleDelete} disabled={!authorizeUser}>
           Delete Book
         </button>
       </div>

@@ -14,8 +14,7 @@ const LoginForm = () => {
     if (!data?.success && responseError) {
       Swal.fire("Oops!", `Something Went wrong`, "error");
     }
-
-    if (data?.success && data?.accessToken) {
+    if (data?.success && data?.data?.accessToken) {
       navigate("/allbooks");
     }
   }, [data, responseError, navigate]);

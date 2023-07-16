@@ -5,11 +5,11 @@ import Review from "../components/Books/Review";
 
 const BookDetails = () => {
   const {id} = useParams();
-  const {data} = useGetSingleBookQuery({id});
+  const {data, refetch} = useGetSingleBookQuery({id});
   return (
     <div className="w-11/12 mx-auto grid grid-cols-10 items-start">
       <Details book={data?.data} />
-      <Review book={data?.data} />
+      <Review book={data?.data} refetch={refetch} />
     </div>
   );
 };

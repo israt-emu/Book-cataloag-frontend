@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import {useAppSelector} from "../../redux/hooks";
 import {useAddWishListMutation} from "../../redux/features/wishlist/wishlistApi";
 import Swal from "sweetalert2";
-import {error} from "console";
+import bookImg from "../../assets/book.jpg";
 import {IError} from "../../interfaces/error";
 import {useAddToReadlistMutation} from "../../redux/features/readlist/readListApi";
 const BookCard = ({book}: IBookProps) => {
@@ -88,9 +88,9 @@ const BookCard = ({book}: IBookProps) => {
     }
   }, [readData, readIsError]);
   return (
-    <div className="max-w-xs rounded-md shadow-md h-full bg-fill hover:shadow-2xl">
+    <div className="max-w-xs rounded-md shadow-md h-full bg-fill hover:shadow-2xl border border-primary ">
       <Link to={`/book-details/${_id}`}>
-        <img src="https://source.unsplash.com/random/300x300/?2" alt="" className="object-cover object-center w-full rounded-t-md h-48 dark:bg-gray-500" />
+        <img src={bookImg} alt="" className="border-b border-primary object-cover object-center w-full rounded-t-md h-48 dark:bg-gray-500 p-2" />
         <div className="flex flex-col justify-between p-6 space-y-6">
           <div className="space-y-1">
             <h2 className="text-xl font-semibold">{title}</h2>

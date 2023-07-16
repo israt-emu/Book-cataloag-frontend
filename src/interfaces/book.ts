@@ -17,6 +17,10 @@ export interface IBook {
 export interface IBookProps {
   book: IBook;
 }
+export interface IBookReviewProps {
+  book: IBook;
+  refetch: () => void;
+}
 export interface IBooksProps {
   data: IBook[];
 }

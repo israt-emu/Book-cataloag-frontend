@@ -1,13 +1,12 @@
 import React from "react";
 import {IBookProps} from "../../interfaces/book";
-import {useGetSingleBookQuery} from "../../redux/features/book/bookApi";
-import {Link} from "react-router-dom";
+import bookImg from "../../assets/book.jpg";
 
 const Details = ({book}: IBookProps) => {
   return (
-    <div className="col-span-5 border-2 border-t-0 border-b-0 border-l-0">
+    <div className="col-span-5 border-r-2 border-primary ">
       <div className="">
-        <img src="https://source.unsplash.com/random/300x300/?2" alt="book-image" />
+        <img src={bookImg} alt="book-image" className="w-9/12" />
       </div>
 
       <h3 className="font-semibold text-xl">Title: {book?.title}</h3>

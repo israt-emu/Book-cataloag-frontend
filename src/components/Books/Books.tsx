@@ -3,8 +3,10 @@ import CardSkeleton from "../ui/CardSkeleton";
 import {Link} from "react-router-dom";
 import BookCard from "./BookCard";
 import Error from "../ui/Error";
+import {useAppSelector} from "../../redux/hooks";
 
 const Books = ({data, isError, isLoading}: IBookSidebarProps) => {
+  const {user} = useAppSelector((state) => state.auth);
   // decide what to render
   let content = null;
 
@@ -35,9 +37,11 @@ const Books = ({data, isError, isLoading}: IBookSidebarProps) => {
   return (
     <div>
       <div className="flex justify-end mb-3">
-        <Link className="" to="/add-new-book">
-          <button className="px-2 py-1.5 rounded bg-accent text-fill cursor-pointer text-sm">Add New Book</button>
-        </Link>
+        {user?.id && (
+          <Link className="" to="/add-new-book">
+            <button className="px-2 py-1.5 rounded bg-accent text-fill cursor-pointer text-sm">Add New Book</button>
+          </Link>
+        )}
       </div>
       {content}
     </div>

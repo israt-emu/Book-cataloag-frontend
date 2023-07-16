@@ -8,7 +8,6 @@ import SignUp from "../pages/SignUp";
 import AddBook from "../pages/AddBook";
 import EditBook from "../pages/EditBook";
 import BookDetails from "../pages/BookDetails";
-import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import WishList from "../pages/WishList";
 import ReadList from "../pages/ReadList";
@@ -70,19 +69,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/login",
-    element: (
-      <PublicRoute>
-        <Login />
-      </PublicRoute>
-    ),
+    element: <Login />,
   },
   {
     path: "/signup",
-    element: (
-      <PublicRoute>
-        <SignUp />
-      </PublicRoute>
-    ),
+    element: <SignUp />,
   },
 
   {

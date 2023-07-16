@@ -7,7 +7,7 @@ import SingleWish from "../components/WishList/SingleWish";
 
 const WishList = () => {
   const {id} = useAppSelector((state) => state.auth.user);
-  const {data, isLoading, isError} = useGetWishListsQuery(id);
+  const {data} = useGetWishListsQuery(id);
   return (
     <div className=" lg:container py-4">
       <div className="w-9/12 bg-second mx-auto rounded py-6 px-12">

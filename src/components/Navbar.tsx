@@ -27,12 +27,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="flex items-center">
-            <Link to="/allbooks" className="flex items-center px-4 hover:bg-gray-500/30 py-1 rounded">
+            <Link to="/wish-list" className="flex items-center px-4 hover:bg-gray-500/30 py-1 rounded">
               Wishlist
             </Link>
           </li>
           <li className="flex items-center">
-            <Link to="/allbooks" className="flex items-center px-4 hover:bg-gray-500/30 py-1 rounded">
+            <Link to="/read-list" className="flex items-center px-4 hover:bg-gray-500/30 py-1 rounded">
               Reading List
             </Link>
           </li>

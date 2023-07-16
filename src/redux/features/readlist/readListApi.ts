@@ -19,7 +19,7 @@ const readlistApi = api.injectEndpoints({
     }),
     updateStatus: builder.mutation({
       query: ({id, data}) => ({
-        url: `/${id}`,
+        url: `/read-list/${id}`,
         method: "PATCH",
         body: data,
       }),

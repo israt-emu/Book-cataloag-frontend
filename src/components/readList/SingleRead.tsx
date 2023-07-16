@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {FaBook} from "react-icons/fa";
 import {BsBookFill, BsBook} from "react-icons/bs";
 import {BiSolidBookHeart} from "react-icons/bi";
@@ -29,6 +29,9 @@ const SingleRead = ({read}: IReadProps) => {
       if (result.isConfirmed) {
         updateStatus({
           id: read?._id,
+          data: {
+            status: status,
+          },
         });
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
@@ -36,16 +39,12 @@ const SingleRead = ({read}: IReadProps) => {
     });
   };
   useEffect(() => {
-    if (readData?.success) {
-      Swal.fire("Great!", "Book added to your readList!", "success");
-    } else if (!readData?.success && readIsError) {
-      if ((readError as IError)?.data?.message === "Already added this book to readlist!") {
-        Swal.fire("Oops!", `${(readError as IError)?.data?.message}`, "error");
-      } else {
-        Swal.fire("Oops!", `Something went wrong`, "error");
-      }
+    if (updateData?.success) {
+      Swal.fire("Great!", `Status updated to ${updateData?.data?.status}`, "success");
+    } else if (!updateData?.success && isError) {
+      Swal.fire("Oops!", `Something went wrong`, "error");
     }
-  }, [readData, readIsError]);
+  }, [updateData, isError]);
   return (
     <li className="flex items-center gap-2 bg-fill  hover:shadow-xl shadow-sm p-4 rounded">
       <div className="text-lg text-accent">
@@ -55,9 +54,9 @@ const SingleRead = ({read}: IReadProps) => {
         {data?.data?.title} by <span className="font-semibold">{data?.data?.author}</span>
       </p>
       <div className="flex items-center gap-4 text-2xl">
-        <BiSolidBookHeart title="Plan to Read" className={`${read?.status === "Plan to Read" ? "text-accent" : null} cursor-pointer`} />
-        <BsBook title="Reading" className={`${read?.status === "Reading" ? "text-accent" : null} cursor-pointer`} />
-        <BsBookFill title="Finshed Reading" className={`${read?.status === "Finished" ? "text-accent" : null} cursor-pointer`} />
+        <BiSolidBookHeart title="Plan to Read" className={`${read?.status === "Plan to Read" ? "text-accent" : null} cursor-pointer`} onClick={() => handleUpdateStatus("Plan to Read")} />
+        <BsBook title="Reading" className={`${read?.status === "Reading" ? "text-accent" : null} cursor-pointer`} onClick={() => handleUpdateStatus("Reading")} />
+        <BsBookFill title="Finshed Reading" className={`${read?.status === "Finished" ? "text-accent" : null} cursor-pointer`} onClick={() => handleUpdateStatus("Finished")} />
       </div>
     </li>
   );
